@@ -147,7 +147,6 @@ class TargetNet(nn.Module):
         ws = F.relu(self.l4(q).squeeze())+0.000001
 
         Q_overall= (ws/(ws+wc))*Q_style+(wc/(ws+wc))*Q_content
-        # Q_overall = ws * Q_style + wc * Q_content
 
         return Q_overall
 
