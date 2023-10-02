@@ -18,12 +18,12 @@ class Solver(object):
         self.CPE_Net= models.CPE_Net().cuda()
 
         self.Round_num = Round_num
-
-        Pre_style_model_path = './pretrained/Round1_epochs1_srcc_0.5846448246564214.pth'
+        # load the pretrained model
+        Pre_style_model_path = './xxx.pth'
         checkpoint_style = torch.load(Pre_style_model_path)
         self.SRE_Net.load_state_dict(checkpoint_style['model'])
 
-        Pre_content_model_path = './pretrained/Round1_epochs8_srcc_0.8365372901347078.pth'
+        Pre_content_model_path = './xxx.pth'
         checkpoint_content = torch.load(Pre_content_model_path)
         self.CPE_Net.load_state_dict(checkpoint_content['model'])
 
@@ -115,7 +115,6 @@ class Solver(object):
                 best_OV_plcc = test_OV_plcc
                 best_OV_rmse = test_OV_rmse
 
-            # 训练指标
             # print(' %d\t\t%4.3f\t\t\t%4.4f\t\t\t%4.4f\t\t\t%4.4f\t\t\t%4.4f\t\t\t%4.4f\t\t\t%4.4f\t\t\t%4.4f\t\t\t%4.4f\t\t\t%4.4f' %
             #       (t + 1, sum(epoch_loss) / len(epoch_loss), train_OV_srcc, test_OV_srcc, test_OV_krcc, train_SR_srcc, test_SR_srcc, test_SR_krcc, train_CP_srcc, test_CP_srcc, test_CP_krcc))
             one_epoch_time= ((time.time()-start)/60)
@@ -184,7 +183,7 @@ class Solver(object):
 
 
 
-        pred_OV_scores = np.mean(np.reshape(np.array(pred_OV_scores), (-1, self.test_patch_num)), axis=1)  #axis=1表示跨列
+        pred_OV_scores = np.mean(np.reshape(np.array(pred_OV_scores), (-1, self.test_patch_num)), axis=1)  
         gt_OV_scores = np.mean(np.reshape(np.array(gt_OV_scores), (-1, self.test_patch_num)), axis=1)
 
         pred_OV_scores = np.reshape(np.array(pred_OV_scores),(30,8))
