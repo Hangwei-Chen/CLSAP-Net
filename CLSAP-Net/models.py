@@ -17,20 +17,6 @@ model_urls = {
 
 
 class OVT_Net(nn.Module):
-    """
-    Hyper network for learning perceptual rules.
-
-    Args:
-        lda_out_channels: local distortion aware module output size. 局部失真感知模块的输出尺寸
-        hyper_in_channels: input feature channels for hyper network. 输入超网络的特征通道数
-        target_in_size: input vector size for target network.        输入特征向量尺寸
-        target_fc(i)_size: fully connection layer size of target network.
-        feature_size: input feature map width/height for hyper network.
-
-    Note:
-        For size match, input args must satisfy: 'target_fc(i)_size * target_fc(i+1)_size' is divisible by 'feature_size ^ 2'.
-
-    """    #   112, 224, 112, 56, 28, 14, 7
     def __init__(self, hyper_in_channels, target_in_size, target_fc1_size, target_fc2_size, target_fc3_size, target_fc4_size, feature_size):
         super(OVT_Net, self).__init__()
         self.hyperInChn = hyper_in_channels  # 赋值过程
@@ -60,7 +46,7 @@ class OVT_Net(nn.Module):
         self.fc5w_fc = nn.Linear(self.gram_size, self.f4)
         self.fc5b_fc = nn.Linear(self.gram_size, 1)
 
-        # # initialize 初始化
+        # # initialize 
         # for i, m_name in enumerate(self._modules):
         #     if i > 2:
         #         nn.init.kaiming_normal_(self._modules[m_name].weight.data)
@@ -365,10 +351,9 @@ class CPE_Net(nn.Module):
 
         O_content_feature = self.Content_SA1(res_out_OC)
         C_content_feature = self.Content_SA2(res_out_C)
-        #_______________________________________________________________________________
+
         Dif_cf = C_content_feature - O_content_feature
         Fusion_cf = torch.cat((Dif_cf, O_content_feature), 1)
-       #__________________________________________________________________________________
 
         Q_content_feature= self.content_Q_pool(Fusion_cf).view(Fusion_cf.size(0), -1)
         Q_content= self.Q_L1(Q_content_feature)
@@ -393,10 +378,8 @@ class SRE_Net(nn.Module):
         self.style_Q_pool = nn.Sequential(
             nn.Conv2d(2048, 1024, kernel_size=1, stride=1, padding=0, bias=False),
             nn.ReLU(inplace=True),
-            nn.Dropout(p=0.5),
             nn.Conv2d(1024, 512, kernel_size=1, stride=1, padding=0, bias=False),
             nn.ReLU(inplace=True),
-            nn.Dropout(p=0.5),
             nn.AvgPool2d(14, stride=14),
         )
 
