@@ -164,15 +164,10 @@ class TargetFC(nn.Module):
         self.bias = bias
 
     def forward(self, input_):
-        w=self.weight
-        b=self.bias
         input_re = input_.view(-1, input_.shape[0] * input_.shape[1], input_.shape[2], input_.shape[3])
         weight_re = self.weight.view(self.weight.shape[0] * self.weight.shape[1], self.weight.shape[2], self.weight.shape[3], self.weight.shape[4])
         bias_re = self.bias.view(self.bias.shape[0] * self.bias.shape[1])
         out = F.conv2d(input=input_re, weight=weight_re, bias=bias_re, groups=self.weight.shape[0])
-        aaa=1
-
-
         return out.view(input_.shape[0], self.weight.shape[1], input_.shape[2], input_.shape[3])
 
 class Bottleneck(nn.Module):
