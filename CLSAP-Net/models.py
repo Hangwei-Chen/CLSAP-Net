@@ -407,8 +407,8 @@ class SRE_Net(nn.Module):
     def forward(self, S_img, O_img):
         res_out_S1,res_out_S2,res_out_S3,res_out_S4 = self.res_style(S_img)
         res_out_OS1, res_out_OS2, res_out_OS3, res_out_OS4, = self.res_style(O_img)
-        # S_style_feature = self.Style_SA1(res_out_S4)
-        # O_style_feature = self.Style_SA2(res_out_OS4)
+        S_style_feature = self.Style_SA1(res_out_S4)
+        O_style_feature = self.Style_SA2(res_out_OS4)
 
         S_style_feature = res_out_S4
         O_style_feature = res_out_OS4
