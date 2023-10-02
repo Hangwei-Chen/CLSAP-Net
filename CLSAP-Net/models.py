@@ -19,7 +19,7 @@ model_urls = {
 class OVT_Net(nn.Module):
     def __init__(self, hyper_in_channels, target_in_size, target_fc1_size, target_fc2_size, target_fc3_size, target_fc4_size, feature_size):
         super(OVT_Net, self).__init__()
-        self.hyperInChn = hyper_in_channels  # 赋值过程
+        self.hyperInChn = hyper_in_channels  
         self.style_gram_res= resnet50_backbone(pretrained=True)
         self.target_in_size = target_in_size
         self.f1 = target_fc1_size
