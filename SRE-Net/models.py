@@ -156,10 +156,8 @@ class SRE_Net(nn.Module):
         self.style_Q_pool = nn.Sequential(
             nn.Conv2d(2048, 1024, kernel_size=1, stride=1, padding=0, bias=False),
             nn.ReLU(inplace=True),
-            nn.Dropout(p=0.5),
             nn.Conv2d(1024, 512, kernel_size=1, stride=1, padding=0, bias=False),
             nn.ReLU(inplace=True),
-            nn.Dropout(p=0.5),
             nn.AvgPool2d(14, stride=14),
         )
 
