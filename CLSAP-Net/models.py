@@ -105,12 +105,12 @@ def batch_gram(x):
         raise ValueError("input x's shape not in 3D oe 4D tensor")
     return gram
 
-class TargetNet(nn.Module):
+class SAWEH(nn.Module):
     """
     Target network for quality prediction.
     """
     def __init__(self, paras):
-        super(TargetNet, self).__init__()
+        super(SAWEH, self).__init__()
         self.l1 = nn.Sequential(
             TargetFC(paras['target_fc1w'], paras['target_fc1b']),
 
