@@ -90,7 +90,7 @@ class Solver(object):
                 paras = self.OVT_Net(S_img, content_w_vec,style_w_vec)  # 'paras' contains the network weights conveyed to target network
 
                 # Building target network
-                model_target = models.TargetNet(paras).cuda()
+                model_target = models.SAWEH(paras).cuda()
                 for param in model_target.parameters():
                     param.requires_grad = False
 
@@ -170,7 +170,7 @@ class Solver(object):
             paras = self.OVT_Net(S_img, content_w_vec,style_w_vec)  # 'paras' contains the network weights conveyed to target network
 
             # Building target network
-            model_target = models.TargetNet(paras).cuda()
+            model_target = models.SAWEH(paras).cuda()
             for param in model_target.parameters():
                 param.requires_grad = False
 
