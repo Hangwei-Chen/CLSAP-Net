@@ -115,8 +115,6 @@ class Solver(object):
                 best_OV_plcc = test_OV_plcc
                 best_OV_rmse = test_OV_rmse
 
-            # print(' %d\t\t%4.3f\t\t\t%4.4f\t\t\t%4.4f\t\t\t%4.4f\t\t\t%4.4f\t\t\t%4.4f\t\t\t%4.4f\t\t\t%4.4f\t\t\t%4.4f\t\t\t%4.4f' %
-            #       (t + 1, sum(epoch_loss) / len(epoch_loss), train_OV_srcc, test_OV_srcc, test_OV_krcc, train_SR_srcc, test_SR_srcc, test_SR_krcc, train_CP_srcc, test_CP_srcc, test_CP_krcc))
             one_epoch_time= ((time.time()-start)/60)
             print(' %d\t\t%4.3f\t\t%4.4f\t\t%4.4f\t\t%4.4f\t\t%4.4f\t\t%4.4f' %
                   (t + 1, sum(epoch_loss) / len(epoch_loss), test_OV_srcc, test_OV_krcc, test_OV_plcc, test_OV_rmse, one_epoch_time))
