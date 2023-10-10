@@ -10,7 +10,6 @@ from tqdm import tqdm
 
 
 class Solver(object):
-    """Solver for training and testing """
     def __init__(self, config, style_path, content_path, stylized_path, train_idx, test_idx,Round_num):
 
         self.epochs = config.epochs
