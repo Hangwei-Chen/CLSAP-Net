@@ -16,4 +16,12 @@ if you want to train the CLSAP-Net, please first save the pretrained SRE-Net and
 
 ## 🔍 Citation  
 If our criteria is helpful, please consider citing the following papers.  
-H. Chen, F. Shao, X. Chai, Q. Jiang, X. Meng and Y. -S. Ho, "Collaborative Learning and Style-Adaptive Pooling Network for Perceptual Evaluation of Arbitrary Style Transfer," in IEEE Transactions on Neural Networks and Learning Systems, doi: 10.1109/TNNLS.2023.3286542.
+```
+@article{CLSAP-Net,
+  title={Collaborative learning and style-adaptive pooling network for perceptual evaluation of arbitrary style transfer},
+  author={Chen, Hangwei and Shao, Feng and Chai, Xiongli and Jiang, Qiuping and Meng, Xiangchao and Ho, Yo-Sung},
+  journal={IEEE Transactions on Neural Networks and Learning Systems},
+  year={2023},
+  publisher={IEEE}
+}
+```
